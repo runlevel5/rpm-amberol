@@ -8,16 +8,19 @@
 %endif
 
 Name:           amberol
-Version:        0.10.3
-Release:        2
+Version:        2024.2
+Release:        0
 Summary:        Simple and modern GNOME music player
 
 License:        GPL-3.0
 URL:            https://gitlab.gnome.org/World/amberol.git
+Source0:        https://gitlab.gnome.org/World/amberol/-/archive/%{version}/amberol-%{version}.tar.gz
 
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+
+BuildRequires:  cargo-rpm-macros
 BuildRequires:  meson
-BuildRequires:  gtk4-devel
-BuildRequires:  libadwaita-devel
 BuildRequires:  rust
 BuildRequires:  cargo
 BuildRequires:	cmake
@@ -54,33 +57,30 @@ Suggests:       gstreamer1-plugins-ugly-free
 A GNOME music player
 
 %prep
-cd %{_builddir}/
-git clone --recurse-submodules https://gitlab.gnome.org/World/amberol.git
-cd %{_builddir}/amberol/
-git checkout 31137155adb25a2e3a80de83b09e723dc2d78f4a
-#cd %{_builddir}/amberol/build-aux
-#sed -i 's/cargo build/cargo build -j 1/g' cargo.sh
-
+%autosetup -p1 -n amberol-%{version}
 
 %build
-cd amberol*
 %meson --buildtype release
-%meson_build -j 1
+%meson_build
 
 %install
-cd amberol*
 %meson_install
 
 %files
 %{_bindir}/amberol
 %{_datadir}/amberol/amberol.gresource
-%{_datadir}/appdata/io.bassi.Amberol.appdata.xml
 %{_datadir}/applications/io.bassi.Amberol.desktop
 %{_datadir}/dbus-1/services/io.bassi.Amberol.service
 %{_datadir}/glib-2.0/schemas/io.bassi.Amberol.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/io.bassi.Amberol.svg
 %{_datadir}/icons/hicolor/symbolic/apps/io.bassi.Amberol-symbolic.svg
 %{_datadir}/locale/*/LC_MESSAGES/amberol.mo
+%{_datadir}/metainfo/io.bassi.Amberol.metainfo.xml
 
 
 %changelog
+* Fri Feb 28 2025 Trung Lê <8@tle.id.au> - 2024.2-0
+- New release
+
+* Tue Jun 18 2024 Trung Lê <8@tle.id.au> - 0.10.3-2
+- Initial build
