@@ -8,7 +8,7 @@
 %endif
 
 Name:           amberol
-Version:        2024.2
+Version:        2025.1
 Release:        0
 Summary:        Simple and modern GNOME music player
 
@@ -79,6 +79,9 @@ A GNOME music player
 
 
 %changelog
+* Sun Apr 13 2025 Trung Lê <8@tle.id.au> - 2025.1-0
+- New release
+
 * Fri Feb 28 2025 Trung Lê <8@tle.id.au> - 2024.2-0
 - New release
 
