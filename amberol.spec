@@ -8,7 +8,7 @@
 %endif
 
 Name:           amberol
-Version:        2025.1
+Version:        2026.1
 Release:        0
 Summary:        Simple and modern GNOME music player
 
@@ -23,10 +23,11 @@ BuildRequires:  cargo-rpm-macros
 BuildRequires:  meson
 BuildRequires:  rust
 BuildRequires:  cargo
-BuildRequires:	cmake
+BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  desktop-file-utils
-BuildRequires:	reuse
+BuildRequires:  reuse
+BuildRequires:  blueprint-compiler
 BuildRequires:  dbus-devel
 BuildRequires:  pkgconf-pkg-config
 
@@ -79,6 +80,9 @@ A GNOME music player
 
 
 %changelog
+* Sun Apr 12 2026 Trung Lê <8@tle.id.au> - 2026.1-0
+- New release
+
 * Sun Apr 13 2025 Trung Lê <8@tle.id.au> - 2025.1-0
 - New release
 
